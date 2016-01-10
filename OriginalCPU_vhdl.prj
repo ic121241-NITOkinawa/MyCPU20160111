@@ -1,0 +1,6 @@
+vhdl work "C:\ForVHDL\MyCPU20160111\SEL_A.vhd"
+vhdl work "C:\ForVHDL\MyCPU20160111\SELECTER.vhd"
+vhdl work "C:\ForVHDL\MyCPU20160111\Reg_4bit.vhd"
+vhdl work "C:\ForVHDL\MyCPU20160111\FlagRegistor.vhd"
+vhdl work "C:\ForVHDL\MyCPU20160111\ALU.vhd"
+vhdl work "C:\ForVHDL\MyCPU20160111\OriginalCPU.vhd"

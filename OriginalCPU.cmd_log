@@ -1,0 +1,1 @@
+xst -intstyle ise -ifn "C:/ForVHDL/MyCPU20160111/OriginalCPU.xst" -ofn "C:/ForVHDL/MyCPU20160111/OriginalCPU.syr" 

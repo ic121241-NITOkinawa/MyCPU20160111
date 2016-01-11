@@ -4,13 +4,13 @@ Copyright (c) 1995-2012 Xilinx, Inc.  All rights reserved.
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.16 secs
+Total CPU time to Xst completion: 0.53 secs
  
 --> Parameter xsthdpdir set to xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.16 secs
+Total CPU time to Xst completion: 0.55 secs
  
 --> Reading design: OriginalCPU.prj
 
@@ -68,7 +68,7 @@ Automatic Register Balancing       : No
 
 ---- Target Options
 Add IO Buffers                     : YES
-Global Maximum Fanout              : 500
+Global Maximum Fanout              : 100000
 Add Generic Clock Buffer(BUFG)     : 8
 Register Duplication               : YES
 Slice Packing                      : YES
@@ -105,63 +105,58 @@ Slice Utilization Ratio Delta      : 5
 *                          HDL Compilation                              *
 =========================================================================
 Compiling vhdl file "C:/ForVHDL/MyCPU20160111/ALU.vhd" in Library work.
-Entity <ALU> compiled.
-Entity <ALU> (Architecture <Behavioral>) compiled.
+Architecture behavioral of Entity alu is up to date.
 Compiling vhdl file "C:/ForVHDL/MyCPU20160111/FlagRegistor.vhd" in Library work.
-Entity <FlagRegistor> compiled.
-Entity <FlagRegistor> (Architecture <Behavioral>) compiled.
+Architecture behavioral of Entity flagregistor is up to date.
 Compiling vhdl file "C:/ForVHDL/MyCPU20160111/Reg_4bit.vhd" in Library work.
-Entity <Reg_4bit> compiled.
-Entity <Reg_4bit> (Architecture <Behavioral>) compiled.
+Architecture behavioral of Entity reg_4bit is up to date.
 Compiling vhdl file "C:/ForVHDL/MyCPU20160111/SEL_A.vhd" in Library work.
-Entity <SEL_A> compiled.
-Entity <SEL_A> (Architecture <Behavioral>) compiled.
+Architecture behavioral of Entity sel_a is up to date.
 Compiling vhdl file "C:/ForVHDL/MyCPU20160111/SELECTER.vhd" in Library work.
-Entity <SELECTER> compiled.
-Entity <SELECTER> (Architecture <Behavioral>) compiled.
+Architecture behavioral of Entity selecter is up to date.
 Compiling vhdl file "C:/ForVHDL/MyCPU20160111/OriginalCPU.vhd" in Library work.
-Entity <OriginalCPU> compiled.
-Entity <OriginalCPU> (Architecture <Behavioral>) compiled.
+Entity <originalcpu> compiled.
+Entity <originalcpu> (Architecture <behavioral>) compiled.
 
 =========================================================================
 *                     Design Hierarchy Analysis                         *
 =========================================================================
-Analyzing hierarchy for entity <OriginalCPU> in library <work> (architecture <Behavioral>).
+Analyzing hierarchy for entity <OriginalCPU> in library <work> (architecture <behavioral>).
 
-Analyzing hierarchy for entity <ALU> in library <work> (architecture <Behavioral>).
+Analyzing hierarchy for entity <ALU> in library <work> (architecture <behavioral>).
 
-Analyzing hierarchy for entity <FlagRegistor> in library <work> (architecture <Behavioral>).
+Analyzing hierarchy for entity <FlagRegistor> in library <work> (architecture <behavioral>).
 
-Analyzing hierarchy for entity <Reg_4bit> in library <work> (architecture <Behavioral>).
+Analyzing hierarchy for entity <Reg_4bit> in library <work> (architecture <behavioral>).
 
-Analyzing hierarchy for entity <SEL_A> in library <work> (architecture <Behavioral>).
+Analyzing hierarchy for entity <SEL_A> in library <work> (architecture <behavioral>).
 
-Analyzing hierarchy for entity <SELECTER> in library <work> (architecture <Behavioral>).
+Analyzing hierarchy for entity <SELECTER> in library <work> (architecture <behavioral>).
 
 
 =========================================================================
 *                            HDL Analysis                               *
 =========================================================================
-Analyzing Entity <OriginalCPU> in library <work> (Architecture <Behavioral>).
+Analyzing Entity <OriginalCPU> in library <work> (Architecture <behavioral>).
 Entity <OriginalCPU> analyzed. Unit <OriginalCPU> generated.
 
-Analyzing Entity <ALU> in library <work> (Architecture <Behavioral>).
+Analyzing Entity <ALU> in library <work> (Architecture <behavioral>).
 WARNING:Xst:1610 - "C:/ForVHDL/MyCPU20160111/ALU.vhd" line 61: Width mismatch. <ALU_Z> has a width of 5 bits but assigned expression is 9-bit wide.
 WARNING:Xst:1610 - "C:/ForVHDL/MyCPU20160111/ALU.vhd" line 62: Width mismatch. <ALU_Z> has a width of 5 bits but assigned expression is 9-bit wide.
 WARNING:Xst:819 - "C:/ForVHDL/MyCPU20160111/ALU.vhd" line 59: One or more signals are missing in the process sensitivity list. To enable synthesis of FPGA/CPLD hardware, XST will assume that all necessary signals are present in the sensitivity list. Please note that the result of the synthesis may differ from the initial design specification. The missing signals are:
    <ALU_A>, <ALU_B>
 Entity <ALU> analyzed. Unit <ALU> generated.
 
-Analyzing Entity <FlagRegistor> in library <work> (Architecture <Behavioral>).
+Analyzing Entity <FlagRegistor> in library <work> (Architecture <behavioral>).
 Entity <FlagRegistor> analyzed. Unit <FlagRegistor> generated.
 
-Analyzing Entity <Reg_4bit> in library <work> (Architecture <Behavioral>).
+Analyzing Entity <Reg_4bit> in library <work> (Architecture <behavioral>).
 Entity <Reg_4bit> analyzed. Unit <Reg_4bit> generated.
 
-Analyzing Entity <SEL_A> in library <work> (Architecture <Behavioral>).
+Analyzing Entity <SEL_A> in library <work> (Architecture <behavioral>).
 Entity <SEL_A> analyzed. Unit <SEL_A> generated.
 
-Analyzing Entity <SELECTER> in library <work> (Architecture <Behavioral>).
+Analyzing Entity <SELECTER> in library <work> (Architecture <behavioral>).
 Entity <SELECTER> analyzed. Unit <SELECTER> generated.
 
 
@@ -230,6 +225,8 @@ Unit <SELECTER> synthesized.
 
 Synthesizing Unit <OriginalCPU>.
     Related source file is "C:/ForVHDL/MyCPU20160111/OriginalCPU.vhd".
+WARNING:Xst:646 - Signal <ROM_OUT> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:653 - Signal <ROM_IN> is used but never assigned. This sourceless signal will be automatically connected to value 00000000.
 WARNING:Xst:653 - Signal <ONE> is used but never assigned. This sourceless signal will be automatically connected to value 1.
 WARNING:Xst:1780 - Signal <NXST> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:1780 - Signal <CRST> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
@@ -238,6 +235,8 @@ WARNING:Xst:646 - Signal <BUS_FR<0>> is assigned but never used. This unconnecte
 WARNING:Xst:653 - Signal <BUS_ALU_B> is used but never assigned. This sourceless signal will be automatically connected to value 0000.
 Unit <OriginalCPU> synthesized.
 
+WARNING:Xst:524 - All outputs of the instance <CPU_PC> of the block <Reg_4bit> are unconnected in block <OriginalCPU>.
+   This instance will be removed from the design along with all underlying logic
 
 =========================================================================
 HDL Synthesis Report
@@ -246,8 +245,8 @@ Macro Statistics
 # ROMs                                                 : 2
  15x15-bit ROM                                         : 1
  8x8-bit ROM                                           : 1
-# Registers                                            : 5
- 4-bit register                                        : 5
+# Registers                                            : 4
+ 4-bit register                                        : 4
 # Latches                                              : 1
  15-bit latch                                          : 1
 # Comparators                                          : 1
@@ -265,6 +264,22 @@ WARNING:Xst:524 - All outputs of the instance <CPU_IR2> of the block <Reg_4bit> 
    This instance will be removed from the design along with all underlying logic
 WARNING:Xst:1290 - Hierarchical block <COU_FR> is unconnected in block <OriginalCPU>.
    It will be removed from the design.
+WARNING:Xst:1710 - FF/Latch <TMP_0> (without init value) has a constant value of 0 in block <CPU_IR1>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <TMP_1> (without init value) has a constant value of 0 in block <CPU_IR1>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <TMP_2> (without init value) has a constant value of 0 in block <CPU_IR1>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <TMP_3> (without init value) has a constant value of 0 in block <CPU_IR1>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1294 - Latch <0> is equivalent to a wire in block <0>.
+WARNING:Xst:1294 - Latch <0> is equivalent to a wire in block <1>.
+WARNING:Xst:1294 - Latch <0> is equivalent to a wire in block <2>.
+WARNING:Xst:1294 - Latch <0> is equivalent to a wire in block <3>.
+WARNING:Xst:1294 - Latch <0> is equivalent to a wire in block <4>.
+WARNING:Xst:1294 - Latch <0> is equivalent to a wire in block <5>.
+WARNING:Xst:1294 - Latch <0> is equivalent to a wire in block <6>.
+WARNING:Xst:1294 - Latch <0> is equivalent to a wire in block <7>.
+WARNING:Xst:1294 - Latch <0> is equivalent to a wire in block <8>.
+WARNING:Xst:1294 - Latch <0> is equivalent to a wire in block <9>.
+WARNING:Xst:1294 - Latch <0> is equivalent to a wire in block <10>.
+WARNING:Xst:1294 - Latch <0> is equivalent to a wire in block <11>.
 
 =========================================================================
 Advanced HDL Synthesis Report
@@ -273,8 +288,8 @@ Macro Statistics
 # ROMs                                                 : 2
  15x15-bit ROM                                         : 1
  8x8-bit ROM                                           : 1
-# Registers                                            : 16
- Flip-Flops                                            : 16
+# Registers                                            : 12
+ Flip-Flops                                            : 12
 # Latches                                              : 1
  15-bit latch                                          : 1
 # Comparators                                          : 1
@@ -287,10 +302,35 @@ Macro Statistics
 =========================================================================
 *                         Low Level Synthesis                           *
 =========================================================================
+INFO:Xst:2261 - The FF/Latch <CPU_IR1/TMP_3> in Unit <OriginalCPU> is equivalent to the following 3 FFs/Latches, which will be removed : <CPU_IR1/TMP_2> <CPU_IR1/TMP_1> <CPU_IR1/TMP_0> 
+WARNING:Xst:1710 - FF/Latch <CPU_IR1/TMP_3> (without init value) has a constant value of 0 in block <OriginalCPU>. This FF/Latch will be trimmed during the optimization process.
 
 Optimizing unit <OriginalCPU> ...
 
 Optimizing unit <SELECTER> ...
+WARNING:Xst:1293 - FF/Latch <CPU_SEL/CRST_0> has a constant value of 1 in block <OriginalCPU>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <CPU_SEL/CRST_1> has a constant value of 0 in block <OriginalCPU>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <CPU_SEL/CRST_2> has a constant value of 0 in block <OriginalCPU>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <CPU_SEL/CRST_3> has a constant value of 0 in block <OriginalCPU>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <CPU_SEL/CRST_4> has a constant value of 0 in block <OriginalCPU>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <CPU_SEL/CRST_5> has a constant value of 0 in block <OriginalCPU>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <CPU_SEL/CRST_6> has a constant value of 0 in block <OriginalCPU>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <CPU_SEL/CRST_7> has a constant value of 0 in block <OriginalCPU>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <CPU_SEL/CRST_8> has a constant value of 0 in block <OriginalCPU>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <CPU_SEL/CRST_9> has a constant value of 0 in block <OriginalCPU>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <CPU_SEL/CRST_10> has a constant value of 0 in block <OriginalCPU>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <CPU_SEL/CRST_11> has a constant value of 0 in block <OriginalCPU>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <CPU_A_REG/TMP_0> (without init value) has a constant value of 0 in block <OriginalCPU>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <CPU_A_REG/TMP_1> (without init value) has a constant value of 0 in block <OriginalCPU>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <CPU_A_REG/TMP_2> (without init value) has a constant value of 0 in block <OriginalCPU>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <CPU_O_REG/TMP_0> (without init value) has a constant value of 0 in block <OriginalCPU>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <CPU_O_REG/TMP_1> (without init value) has a constant value of 0 in block <OriginalCPU>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <CPU_O_REG/TMP_2> (without init value) has a constant value of 0 in block <OriginalCPU>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <CPU_O_REG/TMP_3> (without init value) has a constant value of 0 in block <OriginalCPU>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:2677 - Node <CPU_SEL/CRST_14> of sequential type is unconnected in block <OriginalCPU>.
+WARNING:Xst:2677 - Node <CPU_SEL/CRST_13> of sequential type is unconnected in block <OriginalCPU>.
+WARNING:Xst:2677 - Node <CPU_SEL/CRST_12> of sequential type is unconnected in block <OriginalCPU>.
+WARNING:Xst:1898 - Due to constant pushing, FF/Latch <CPU_A_REG/TMP_3> is unconnected in block <OriginalCPU>.
 
 Mapping all equations...
 Building and optimizing final netlist ...
@@ -301,10 +341,7 @@ Final Macro Processing ...
 =========================================================================
 Final Register Report
 
-Macro Statistics
-# Registers                                            : 16
- Flip-Flops                                            : 16
-
+Found no macro
 =========================================================================
 
 =========================================================================
@@ -329,23 +366,13 @@ Optimization Goal                  : Speed
 Keep Hierarchy                     : No
 
 Design Statistics
-# IOs                              : 18
+# IOs                              : 6
 
 Cell Usage :
-# BELS                             : 44
-#      LUT2                        : 1
-#      LUT3                        : 6
-#      LUT4                        : 30
-#      MUXF5                       : 6
-#      VCC                         : 1
-# FlipFlops/Latches                : 31
-#      FDCE                        : 16
-#      LD_1                        : 15
-# Clock Buffers                    : 1
-#      BUFGP                       : 1
-# IO Buffers                       : 13
-#      IBUF                        : 5
-#      OBUF                        : 8
+# BELS                             : 1
+#      GND                         : 1
+# IO Buffers                       : 4
+#      OBUF                        : 4
 =========================================================================
 
 Device utilization summary:
@@ -353,13 +380,9 @@ Device utilization summary:
 
 Selected Device : 3s400pq208-4 
 
- Number of Slices:                       22  out of   3584     0%  
- Number of Slice Flip Flops:             27  out of   7168     0%  
- Number of 4 input LUTs:                 37  out of   7168     0%  
- Number of IOs:                          18
- Number of bonded IOBs:                  14  out of    141     9%  
-    IOB Flip Flops:                       4
- Number of GCLKs:                         1  out of      8    12%  
+ Number of Slices:                        0  out of   3584     0%  
+ Number of IOs:                           6
+ Number of bonded IOBs:                   4  out of    141     2%  
 
 ---------------------------
 Partition Resource Summary:
@@ -379,32 +402,19 @@ NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
 
 Clock Information:
 ------------------
----------------------------------------------------+-------------------------+-------+
-Clock Signal                                       | Clock buffer(FF name)   | Load  |
----------------------------------------------------+-------------------------+-------+
-CLK                                                | BUFGP                   | 16    |
-CPU_SEL/CRST_cmp_eq0000(CPU_SEL/CRST_cmp_eq00001:O)| NONE(*)(CPU_SEL/CRST_14)| 15    |
----------------------------------------------------+-------------------------+-------+
-(*) This 1 clock signal(s) are generated by combinatorial logic,
-and XST is not able to identify which are the primary clock signals.
-Please use the CLOCK_SIGNAL constraint to specify the clock signal(s) generated by combinatorial logic.
-INFO:Xst:2169 - HDL ADVISOR - Some clock signals were not automatically buffered by XST with BUFG/BUFR resources. Please use the buffer_type constraint in order to insert these buffers to the clock signals to help prevent skew problems.
+No clock signals found in this design
 
 Asynchronous Control Signals Information:
 ----------------------------------------
------------------------------------+------------------------+-------+
-Control Signal                     | Buffer(FF name)        | Load  |
------------------------------------+------------------------+-------+
-RST                                | IBUF                   | 16    |
------------------------------------+------------------------+-------+
+No asynchronous control signals found in this design
 
 Timing Summary:
 ---------------
 Speed Grade: -4
 
-   Minimum period: 4.239ns (Maximum Frequency: 235.905MHz)
-   Minimum input arrival time before clock: 1.825ns
-   Maximum output required time after clock: 7.165ns
+   Minimum period: No path found
+   Minimum input arrival time before clock: No path found
+   Maximum output required time after clock: No path found
    Maximum combinational path delay: No path found
 
 Timing Detail:
@@ -412,78 +422,16 @@ Timing Detail:
 All values displayed in nanoseconds (ns)
 
 =========================================================================
-Timing constraint: Default period analysis for Clock 'CLK'
-  Clock period: 4.239ns (frequency: 235.905MHz)
-  Total number of paths / destination ports: 48 / 12
--------------------------------------------------------------------------
-Delay:               4.239ns (Levels of Logic = 3)
-  Source:            CPU_A_REG/TMP_3 (FF)
-  Destination:       CPU_PC/TMP_3 (FF)
-  Source Clock:      CLK rising
-  Destination Clock: CLK rising
-
-  Data Path: CPU_A_REG/TMP_3 to CPU_PC/TMP_3
-                                Gate     Net
-    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
-    ----------------------------------------  ------------
-     FDCE:C->Q             1   0.720   0.869  CPU_A_REG/TMP_3 (CPU_A_REG/TMP_3)
-     LUT3:I2->O            4   0.551   0.985  CPU_SEL_A/ALU_OUT<3>1 (BUS_ALU_A<3>)
-     LUT4:I2->O            1   0.551   0.000  CPU_ALU/ALU_Z<3>_F (N17)
-     MUXF5:I0->O           3   0.360   0.000  CPU_ALU/ALU_Z<3> (BUS_ALU_Z<3>)
-     FDCE:D                    0.203          CPU_PC/TMP_3
-    ----------------------------------------
-    Total                      4.239ns (2.385ns logic, 1.854ns route)
-                                       (56.3% logic, 43.7% route)
-
-=========================================================================
-Timing constraint: Default OFFSET IN BEFORE for Clock 'CLK'
-  Total number of paths / destination ports: 4 / 4
--------------------------------------------------------------------------
-Offset:              1.825ns (Levels of Logic = 1)
-  Source:            ROM_IN<7> (PAD)
-  Destination:       CPU_IR1/TMP_3 (FF)
-  Destination Clock: CLK rising
-
-  Data Path: ROM_IN<7> to CPU_IR1/TMP_3
-                                Gate     Net
-    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
-    ----------------------------------------  ------------
-     IBUF:I->O             1   0.821   0.801  ROM_IN_7_IBUF (ROM_IN_7_IBUF)
-     FDCE:D                    0.203          CPU_IR1/TMP_3
-    ----------------------------------------
-    Total                      1.825ns (1.024ns logic, 0.801ns route)
-                                       (56.1% logic, 43.9% route)
-
-=========================================================================
-Timing constraint: Default OFFSET OUT AFTER for Clock 'CLK'
-  Total number of paths / destination ports: 8 / 8
--------------------------------------------------------------------------
-Offset:              7.165ns (Levels of Logic = 1)
-  Source:            CPU_PC/TMP_3 (FF)
-  Destination:       ROM_OUT<3> (PAD)
-  Source Clock:      CLK rising
-
-  Data Path: CPU_PC/TMP_3 to ROM_OUT<3>
-                                Gate     Net
-    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
-    ----------------------------------------  ------------
-     FDCE:C->Q             1   0.720   0.801  CPU_PC/TMP_3 (CPU_PC/TMP_3)
-     OBUF:I->O                 5.644          ROM_OUT_3_OBUF (ROM_OUT<3>)
-    ----------------------------------------
-    Total                      7.165ns (6.364ns logic, 0.801ns route)
-                                       (88.8% logic, 11.2% route)
-
-=========================================================================
 
 
-Total REAL time to Xst completion: 6.00 secs
-Total CPU time to Xst completion: 5.80 secs
+Total REAL time to Xst completion: 8.00 secs
+Total CPU time to Xst completion: 7.82 secs
  
 --> 
 
-Total memory usage is 218448 kilobytes
+Total memory usage is 218832 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :   13 (   0 filtered)
+Number of warnings :   56 (   0 filtered)
 Number of infos    :    5 (   0 filtered)
 

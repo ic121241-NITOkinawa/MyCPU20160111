@@ -32,8 +32,8 @@ use IEEE.STD_LOGIC_1164.ALL;
 entity OriginalCPU is
     Port ( RST     : in std_logic;
 			  CLK     : in std_logic;
-			  ROM_IN  : in  STD_LOGIC_VECTOR (7 downto 0);
-           ROM_OUT : out STD_LOGIC_VECTOR (3 downto 0);
+--			  ROM_IN  : in  STD_LOGIC_VECTOR (7 downto 0);
+--           ROM_OUT : out STD_LOGIC_VECTOR (3 downto 0);
            OUTPUT  : out STD_LOGIC_VECTOR (3 downto 0));
 end OriginalCPU;
 
@@ -64,6 +64,10 @@ architecture Behavioral of OriginalCPU is
 	constant JMC_I : std_logic_vector(3 downto 0) := "1101"; --JMC Imm
 	constant JMZ_I : std_logic_vector(3 downto 0) := "1110"; --JMZ Imm
 --	constant  : std_logic_vector(3 downto 0) := "1111"; --JMV Imm
+	
+	--ROM bus
+	signal ROM_IN  : std_logic_vector (7 downto 0);
+	signal ROM_OUT : std_logic_vector (3 downto 0);
 	
 	--selecter bus
 	signal BUS_LATCH  : std_logic_vector (2 downto 0);

@@ -68,15 +68,13 @@
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1452520263" xil_pn:in_ck="7702235487411381619" xil_pn:name="TRANEXT_xstsynthesize_spartan3" xil_pn:prop_ck="-8706938382094087456" xil_pn:start_ts="1452520249">
-      <status xil_pn:value="SuccessfullyRun"/>
-      <status xil_pn:value="WarningsGenerated"/>
+    <transform xil_pn:end_ts="1452610651" xil_pn:in_ck="7702235487411381619" xil_pn:name="TRANEXT_xstsynthesize_spartan3" xil_pn:prop_ck="-8706938382094087456" xil_pn:start_ts="1452610647">
+      <status xil_pn:value="FailedRun"/>
       <status xil_pn:value="ReadyToRun"/>
       <outfile xil_pn:name="OriginalCPU.lso"/>
       <outfile xil_pn:name="OriginalCPU.ngc"/>
       <outfile xil_pn:name="OriginalCPU.ngr"/>
       <outfile xil_pn:name="OriginalCPU.prj"/>
-      <outfile xil_pn:name="OriginalCPU.stx"/>
       <outfile xil_pn:name="OriginalCPU.syr"/>
       <outfile xil_pn:name="OriginalCPU.xst"/>
       <outfile xil_pn:name="OriginalCPU_vhdl.prj"/>

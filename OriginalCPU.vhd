@@ -47,6 +47,8 @@ architecture Behavioral of OriginalCPU is
 	subtype ROM_WORD is std_logic_vector (7 downto 0);
 	type ROM is array (0 to 2**4 - 1) of ROM_WORD;
 	
+--	ROM 
+	
 --	Operation Code
 	constant LD_A  : std_logic_vector(3 downto 0) := "0000"; --LD  A, Imm
 	constant OUT_A : std_logic_vector(3 downto 0) := "0001"; --OUT A
@@ -119,6 +121,7 @@ begin
 	COU_FR    : FlagRegistor port map(BUS_ALU_Z,BUS_FR(2), BUS_FR(1), BUS_FR(0));
 	
 	CPU_A_REG : Reg_4bit port map(BUS_ALU_Z(3 downto 0), RST, CLK, BUS_LATCH(2), BUS_AREG_O);
+	CPU_A_REG : Reg_4bit port map(BUS_ALU_Z(3 downto 0), RST, CLK, BUS_LATCH(2), BUS_AREG_O);
 	CPU_O_REG : Reg_4bit port map(BUS_ALU_Z(3 downto 0), RST, CLK, BUS_LATCH(1), OUTPUT);
 	CPU_PC    : Reg_4bit port map(BUS_ALU_Z(3 downto 0), RST, CLK, BUS_LATCH(0), ROM_OUT);
 	CPU_IR1	 : Reg_4bit port map(ROM_IN(7 downto 4), RST, CLK, ONE, BUS_IR(7 downto 4));
@@ -128,5 +131,6 @@ begin
 	
 	CPU_SEL   : SELECTER port map (BUS_IR(7 downto 4), BUS_FR(2 downto 1), BUS_LATCH(2 downto 0), BUS_ALU_SEL(2 downto 0), SEL_Z);
 	
+	ROM(conv_int('0')) <= LD_A & (others => '0');
 	
 end Behavioral;

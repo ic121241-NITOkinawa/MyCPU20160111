@@ -46,9 +46,10 @@ architecture Behavioral of OriginalCPU is
 	
 --	for main memory
 	subtype ROM_WORD is std_logic_vector (7 downto 0);
-	type ROM is array (0 to 2**4 - 1) of ROM_WORD;
+	type ROM is array (0 to 2**4 - 2) of ROM_WORD;
 	
 	signal MEM : ROM;
+--	constant MEM : ROM;
 	
 --	ROM 
 	
@@ -151,6 +152,20 @@ begin
 	
 	CPU_SEL   : SELECTER port map (BUS_IR(7 downto 4), BUS_FR(2 downto 1), BUS_LATCH(2 downto 0), BUS_ALU_SEL(2 downto 0), SEL_Z);
 	
-	MEM(conv_integer("00000000")) <= LD_A & "0000";
+	MEM(conv_integer(X"0")) <= LD_A  & "0000";
+	MEM(conv_integer(X"1")) <= OUT_A & "0000";
+	MEM(conv_integer(X"2")) <= ADD_O & "0000";
+	MEM(conv_integer(X"3")) <= ADD_A & "0000";
+	MEM(conv_integer(X"4")) <= SUB_A & "0000";
+	MEM(conv_integer(X"5")) <= CMP_A & "0000";
+	MEM(conv_integer(X"6")) <= AND_A & "0000";
+	MEM(conv_integer(X"7")) <= OR_A  & "0000";
+	MEM(conv_integer(X"8")) <= XOR_A & "0000";
+	MEM(conv_integer(X"9")) <= SHL_A & "0000";
+	MEM(conv_integer(X"A")) <= SHR_A & "0000";
+	MEM(conv_integer(X"B")) <= NOT_A & "0000";
+	MEM(conv_integer(X"C")) <= JMP_I & "0000";
+	MEM(conv_integer(X"D")) <= JMC_I & "0000";
+	MEM(conv_integer(X"E")) <= JMZ_I & "0000";
 	
 end Behavioral;

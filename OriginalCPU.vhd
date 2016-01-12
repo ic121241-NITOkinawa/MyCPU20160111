@@ -19,6 +19,7 @@
 ----------------------------------------------------------------------------------
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.STD_LOGIC_unsigned.ALL;
 
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
@@ -47,25 +48,44 @@ architecture Behavioral of OriginalCPU is
 	subtype ROM_WORD is std_logic_vector (7 downto 0);
 	type ROM is array (0 to 2**4 - 1) of ROM_WORD;
 	
+	signal MEM : ROM;
+	
 --	ROM 
 	
+----	Operation Code
+--	constant LD_A  : std_logic_vector(7 downto 0) := "00000000"; --LD  A, Imm
+--	constant OUT_A : std_logic_vector(3 downto 0) := "0001"; --OUT A
+--	constant ADD_O : std_logic_vector(3 downto 0) := "0010"; --ADD OUT, Imm
+--	constant ADD_A : std_logic_vector(3 downto 0) := "0011"; --ADD A, Imm
+--	constant SUB_A : std_logic_vector(3 downto 0) := "0100"; --SUB A, Imm
+--	constant CMP_A : std_logic_vector(3 downto 0) := "0101"; --CMP A, Imm
+--	constant AND_A : std_logic_vector(3 downto 0) := "0110"; --AND A, Imm
+--	constant OR_A  : std_logic_vector(3 downto 0) := "0111"; --OR  A, Imm
+--	constant XOR_A : std_logic_vector(3 downto 0) := "1000"; --XOR A, Imm
+--	constant SHL_A : std_logic_vector(3 downto 0) := "1001"; --SHL A
+--	constant SHR_A : std_logic_vector(3 downto 0) := "1010"; --SHR A
+--	constant NOT_A : std_logic_vector(3 downto 0) := "1011"; --NOT A
+--	constant JMP_I : std_logic_vector(3 downto 0) := "1100"; --JMP Imm
+--	constant JMC_I : std_logic_vector(3 downto 0) := "1101"; --JMC Imm
+--	constant JMZ_I : std_logic_vector(3 downto 0) := "1110"; --JMZ Imm
+----	constant  : std_logic_vector(3 downto 0) := "1111"; --JMV Imm
 --	Operation Code
-	constant LD_A  : std_logic_vector(3 downto 0) := "0000"; --LD  A, Imm
-	constant OUT_A : std_logic_vector(3 downto 0) := "0001"; --OUT A
-	constant ADD_O : std_logic_vector(3 downto 0) := "0010"; --ADD OUT, Imm
-	constant ADD_A : std_logic_vector(3 downto 0) := "0011"; --ADD A, Imm
-	constant SUB_A : std_logic_vector(3 downto 0) := "0100"; --SUB A, Imm
-	constant CMP_A : std_logic_vector(3 downto 0) := "0101"; --CMP A, Imm
-	constant AND_A : std_logic_vector(3 downto 0) := "0110"; --AND A, Imm
-	constant OR_A  : std_logic_vector(3 downto 0) := "0111"; --OR  A, Imm
-	constant XOR_A : std_logic_vector(3 downto 0) := "1000"; --XOR A, Imm
-	constant SHL_A : std_logic_vector(3 downto 0) := "1001"; --SHL A
-	constant SHR_A : std_logic_vector(3 downto 0) := "1010"; --SHR A
-	constant NOT_A : std_logic_vector(3 downto 0) := "1011"; --NOT A
-	constant JMP_I : std_logic_vector(3 downto 0) := "1100"; --JMP Imm
-	constant JMC_I : std_logic_vector(3 downto 0) := "1101"; --JMC Imm
-	constant JMZ_I : std_logic_vector(3 downto 0) := "1110"; --JMZ Imm
---	constant  : std_logic_vector(3 downto 0) := "1111"; --JMV Imm
+	signal LD_A  : std_logic_vector(3 downto 0) := "0000"; --LD  A, Imm
+	signal OUT_A : std_logic_vector(3 downto 0) := "0001"; --OUT A
+	signal ADD_O : std_logic_vector(3 downto 0) := "0010"; --ADD OUT, Imm
+	signal ADD_A : std_logic_vector(3 downto 0) := "0011"; --ADD A, Imm
+	signal SUB_A : std_logic_vector(3 downto 0) := "0100"; --SUB A, Imm
+	signal CMP_A : std_logic_vector(3 downto 0) := "0101"; --CMP A, Imm
+	signal AND_A : std_logic_vector(3 downto 0) := "0110"; --AND A, Imm
+	signal OR_A  : std_logic_vector(3 downto 0) := "0111"; --OR  A, Imm
+	signal XOR_A : std_logic_vector(3 downto 0) := "1000"; --XOR A, Imm
+	signal SHL_A : std_logic_vector(3 downto 0) := "1001"; --SHL A
+	signal SHR_A : std_logic_vector(3 downto 0) := "1010"; --SHR A
+	signal NOT_A : std_logic_vector(3 downto 0) := "1011"; --NOT A
+	signal JMP_I : std_logic_vector(3 downto 0) := "1100"; --JMP Imm
+	signal JMC_I : std_logic_vector(3 downto 0) := "1101"; --JMC Imm
+	signal JMZ_I : std_logic_vector(3 downto 0) := "1110"; --JMZ Imm
+--	signal  : std_logic_vector(3 downto 0) := "1111"; --JMV Imm
 	
 	--ROM bus
 	signal ROM_IN  : std_logic_vector (7 downto 0);
@@ -120,7 +140,7 @@ begin
 	CPU_ALU   : ALU      port map(BUS_ALU_A, BUS_ALU_B, BUS_ALU_SEL, BUS_ALU_Z);
 	COU_FR    : FlagRegistor port map(BUS_ALU_Z,BUS_FR(2), BUS_FR(1), BUS_FR(0));
 	
-	CPU_A_REG : Reg_4bit port map(BUS_ALU_Z(3 downto 0), RST, CLK, BUS_LATCH(2), BUS_AREG_O);
+--	CPU_A_REG : Reg_4bit port map(BUS_ALU_Z(3 downto 0), RST, CLK, BUS_LATCH(2), BUS_AREG_O);
 	CPU_A_REG : Reg_4bit port map(BUS_ALU_Z(3 downto 0), RST, CLK, BUS_LATCH(2), BUS_AREG_O);
 	CPU_O_REG : Reg_4bit port map(BUS_ALU_Z(3 downto 0), RST, CLK, BUS_LATCH(1), OUTPUT);
 	CPU_PC    : Reg_4bit port map(BUS_ALU_Z(3 downto 0), RST, CLK, BUS_LATCH(0), ROM_OUT);
@@ -131,6 +151,6 @@ begin
 	
 	CPU_SEL   : SELECTER port map (BUS_IR(7 downto 4), BUS_FR(2 downto 1), BUS_LATCH(2 downto 0), BUS_ALU_SEL(2 downto 0), SEL_Z);
 	
-	ROM(conv_int('0')) <= LD_A & (others => '0');
+	MEM(conv_integer("00000000")) <= LD_A & "0000";
 	
 end Behavioral;

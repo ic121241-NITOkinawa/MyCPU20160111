@@ -163,7 +163,7 @@ begin
 	MEM(conv_integer(X"8")) <= XOR_A & "0000";
 	MEM(conv_integer(X"9")) <= SHL_A & "0000";
 	MEM(conv_integer(X"A")) <= SHR_A & "0000";
-	MEM(conv_integer(X"B")) <= NOT_A & "0000";
+	MEM(conv_integer(X"B")) <= NOT_A & "1111";
 	MEM(conv_integer(X"C")) <= JMP_I & "0000";
 	MEM(conv_integer(X"D")) <= JMC_I & "0000";
 	MEM(conv_integer(X"E")) <= JMZ_I & "0000";

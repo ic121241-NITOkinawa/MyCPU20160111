@@ -49,7 +49,23 @@ architecture Behavioral of OriginalCPU is
 	type ROM is array (0 to 2**4 - 2) of ROM_WORD;
 	
 	signal MEM : ROM;
---	constant MEM : ROM;
+	constant I_MEM : ROM :=(
+		X"00",
+		X"10",
+		X"20",
+		X"30",
+		X"40",
+		X"50",
+		X"60",
+		X"70",
+		X"80",
+		X"90",
+		X"A0",
+		X"BF",
+		X"C0",
+		X"D0",
+		X"E0"
+	);
 	
 --	ROM 
 	
@@ -167,5 +183,8 @@ begin
 	MEM(conv_integer(X"C")) <= JMP_I & "0000";
 	MEM(conv_integer(X"D")) <= JMC_I & "0000";
 	MEM(conv_integer(X"E")) <= JMZ_I & "0000";
+	
+--	ROM_IN <= MEM;
+--	ROM_IN <= I_MEM;
 	
 end Behavioral;

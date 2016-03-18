@@ -35,3 +35,9 @@ xst -intstyle ise -ifn "C:/ForVHDL/MyCPU20160111/OriginalCPU.xst" -ofn "C:/ForVH
 xst -intstyle ise -ifn "C:/ForVHDL/MyCPU20160111/OriginalCPU.xst" -ofn "C:/ForVHDL/MyCPU20160111/OriginalCPU.syr" 
 xst -intstyle ise -ifn "C:/ForVHDL/MyCPU20160111/OriginalCPU.xst" -ofn "C:/ForVHDL/MyCPU20160111/OriginalCPU.syr" 
 xst -intstyle ise -ifn "C:/ForVHDL/MyCPU20160111/OriginalCPU.xst" -ofn "C:/ForVHDL/MyCPU20160111/OriginalCPU.syr" 
+xst -intstyle ise -ifn "C:/ForVHDL/MyCPU20160111/OriginalCPU.xst" -ofn "C:/ForVHDL/MyCPU20160111/OriginalCPU.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -i -p xc3s400-pq208-4 OriginalCPU.ngc OriginalCPU.ngd  
+map -intstyle ise -p xc3s400-pq208-4 -cm area -ir off -pr off -c 100 -o OriginalCPU_map.ncd OriginalCPU.ngd OriginalCPU.pcf 
+par -w -intstyle ise -ol high -t 1 OriginalCPU_map.ncd OriginalCPU.ncd OriginalCPU.pcf 
+trce -intstyle ise -v 3 -s 4 -n 3 -fastpaths -xml OriginalCPU.twx OriginalCPU.ncd -o OriginalCPU.twr OriginalCPU.pcf 
+trce -intstyle ise -v 3 -s 4 -n 3 -fastpaths -xml OriginalCPU_preroute.twx OriginalCPU_map.ncd -o OriginalCPU_preroute.twr OriginalCPU.pcf 
